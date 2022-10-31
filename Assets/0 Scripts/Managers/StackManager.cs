@@ -21,9 +21,8 @@ namespace CubeSurfers.Managers
         {
             Vector3 lastCubePos = stackableCubes[stackableCubes.Count - 1].position;
             stackableCubes.Add(cube);
-            cube.SetParent(_firstCube.transform);//TODO : SetParent yapılmayacak. transform.position ile yapılacak.
+            //cube.SetParent(_firstCube.transform);//TODO : SetParent yapılmayacak. transform.position ile yapılacak.
             cube.position = new Vector3(lastCubePos.x, lastCubePos.y + _cubeScale, lastCubePos.z);
-
         }
     }
 }

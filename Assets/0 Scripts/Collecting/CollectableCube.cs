@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CubeSurfers.Managers;
 using CubeSurfers.Movement;
 using UnityEngine;
+using DG.Tweening;
 
 namespace CubeSurfers.Collecting
 {

@@ -2,27 +2,37 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace CubeSurfers.Managers
 {
     public class StackManager : Singleton<StackManager>
     {
         public List<Transform> stackableCubes;
-        private readonly float _cubeScale = .04f;
-        private FirstCube _firstCube;
+        private readonly float _cubeScale = 0.050f;
+        private Transform lastCubePos;
 
         private void Start()
         {
-            _firstCube = FindObjectOfType<FirstCube>();
-            stackableCubes.Add(_firstCube.transform);
+            lastCubePos = GameObject.FindGameObjectWithTag("FirstCubePos").transform;
         }
 
         public void Stack(Transform cube)
         {
-            Vector3 lastCubePos = stackableCubes[stackableCubes.Count - 1].position;
+            if(!cube.CompareTag("First Cube"))
+                cube.position = new Vector3(lastCubePos.position.x, lastCubePos.position.y + (_cubeScale * stackableCubes.Count), lastCubePos.position.z);
             stackableCubes.Add(cube);
-            //cube.SetParent(_firstCube.transform);//TODO : SetParent yapılmayacak. transform.position ile yapılacak.
-            cube.position = new Vector3(lastCubePos.x, lastCubePos.y + _cubeScale, lastCubePos.z);
+
+            StartCoroutine(OscillateRoutine());
+        }
+
+        private IEnumerator OscillateRoutine()
+        {
+            for (int i = 0; i < stackableCubes.Count; i++)
+            {
+                stackableCubes[i].DOPunchScale(new Vector3(1, 0, 1), .3f);
+                yield return new WaitForSeconds(.1f);
+            }
         }
     }
 }

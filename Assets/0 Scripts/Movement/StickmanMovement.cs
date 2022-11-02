@@ -8,10 +8,10 @@ namespace CubeSurfers.Movement
 {
     public class StickmanMovement : MonoBehaviour
     {
-        private Transform _thisTransform;
+        private Rigidbody _rigidbody;
         private void Awake()
         {
-            _thisTransform = transform;
+            _rigidbody = GetComponent<Rigidbody>();
             
             // EVENT ASSIGNMENTS
             EventManager.onCollectCube += Jump;
@@ -19,9 +19,9 @@ namespace CubeSurfers.Movement
 
         private void Jump()
         {
-            _thisTransform.position =
+            transform.position = new Vector3(transform.position.x,
                 StackManager.Instance.stackableCubes[StackManager.Instance.stackableCubes.Count - 1].transform
-                    .position + Vector3.up * .02f;
+                    .position.y + .02f,transform.position.z);
         }
     }
 }

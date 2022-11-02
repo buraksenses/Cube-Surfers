@@ -17,18 +17,11 @@ namespace CubeSurfers.Movement
             EventManager.onCollectCube += Jump;
         }
 
-        private void Start()
-        {
-            _thisTransform.position =
-                StackManager.Instance.stackableCubes[StackManager.Instance.stackableCubes.Count - 1].transform
-                    .position + Vector3.up * .04f;
-        }
-
         private void Jump()
         {
             _thisTransform.position =
                 StackManager.Instance.stackableCubes[StackManager.Instance.stackableCubes.Count - 1].transform
-                    .position + Vector3.up * .04f;
+                    .position + Vector3.up * .02f;
         }
     }
 }

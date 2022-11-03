@@ -43,8 +43,8 @@ namespace CubeSurfers.Collecting
         private void OnCollisionEnter(Collision collision)
         {
             if (!collision.collider.CompareTag("Obstacle")) return;
-            Unstack();
-            Debug.Log(this.name);
+            StackManager.Instance.Unstack(_thisTransform);
+            isStacked = false;
         }
 
         public void GetCollected()
@@ -58,16 +58,10 @@ namespace CubeSurfers.Collecting
             isStacked = true;
         }
 
-        private void Move()
+        internal void Move()
         {
             _thisTransform.position =
                 new Vector3(firstCubeTr.position.x, _thisTransform.position.y, firstCubeTr.position.z);
-        }
-
-        private void Unstack()
-        { 
-            StackManager.Instance.stackableCubes.Remove(transform);
-            EventManager.onUpdate -= Move;
         }
     }
 }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CubeSurfers.Collecting;
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor;
 
 namespace CubeSurfers.Managers
 {
@@ -33,6 +35,12 @@ namespace CubeSurfers.Managers
                 stackableCubes[i].DOPunchScale(new Vector3(1, 0, 1), .3f);
                 yield return new WaitForSeconds(.1f);
             }
+        }
+
+        public void Unstack(Transform cube)
+        {
+            stackableCubes.Remove(transform);
+            EventManager.onUpdate -= cube.GetComponent<CollectableCube>().Move;
         }
     }
 }

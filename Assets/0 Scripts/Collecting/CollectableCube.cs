@@ -44,6 +44,7 @@ namespace CubeSurfers.Collecting
         {
             if (!collision.collider.CompareTag("Obstacle")) return;
             Unstack();
+            Debug.Log(this.name);
         }
 
         public void GetCollected()

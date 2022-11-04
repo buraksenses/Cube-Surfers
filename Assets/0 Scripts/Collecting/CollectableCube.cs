@@ -16,6 +16,7 @@ namespace CubeSurfers.Collecting
         private Transform _thisTransform;
         [SerializeField] private Transform firstCubeTr;
         [SerializeField] private bool isStacked;
+        [SerializeField] private float x = 1;
         private void Awake()
         {
             _boxCollider = GetComponent<BoxCollider>();
@@ -25,13 +26,15 @@ namespace CubeSurfers.Collecting
 
         private void Start()
         {
-            if (CompareTag("First Cube"))
-            {
-                StackManager.Instance.Stack(transform);
-                EventManager.onUpdate += Move;
-                isStacked = true;
-            }
-               
+            if (!CompareTag("First Cube")) return;
+            StackManager.Instance.Stack(transform);
+            EventManager.onUpdate += Move;
+            isStacked = true;
+        }
+
+        private void Update()
+        {
+            Time.timeScale = x;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -45,6 +48,7 @@ namespace CubeSurfers.Collecting
             if (!collision.collider.CompareTag("Obstacle")) return;
             StackManager.Instance.Unstack(_thisTransform);
             isStacked = false;
+            Debug.Log(name);
         }
 
         public void GetCollected()

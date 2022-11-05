@@ -9,8 +9,8 @@ namespace CubeSurfers.Movement
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public float leftBounds = -.150f;
-        public float rightBounds = .140f;
+        public float leftBounds = -4f;
+        public float rightBounds = 4f;
 
         private float _deltaX;
         private float _moveSensitivity = 20f;
@@ -26,7 +26,7 @@ namespace CubeSurfers.Movement
         }
         private void MoveForward()
         {
-            transform.position += Vector3.forward * (Time.deltaTime * 1f);
+            transform.position += Vector3.forward * (Time.deltaTime * 20f);
         }
 
         private void MoveByBounds()

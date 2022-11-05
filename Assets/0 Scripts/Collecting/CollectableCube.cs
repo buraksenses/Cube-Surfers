@@ -27,7 +27,7 @@ namespace CubeSurfers.Collecting
         private void Start()
         {
             if (!CompareTag("First Cube")) return;
-            StackManager.Instance.Stack(transform);
+            StackManager.Instance.Stack(_thisTransform);
             EventManager.onUpdate += Move;
             isStacked = true;
         }

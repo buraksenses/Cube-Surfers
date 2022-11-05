@@ -11,8 +11,9 @@ namespace CubeSurfers.Managers
     public class StackManager : Singleton<StackManager>
     {
         public List<Transform> stackableCubes;
-        private readonly float _cubeScale = 0.5f;
+        private readonly float _cubeScale = 0.5f;//TODO: LocalScale olarak değiştirilecek.
         private Transform lastCubePos;
+        private readonly WaitForSeconds _waitForSecondsForOscillate = new WaitForSeconds(.05f);
 
         private void Start()
         {
@@ -21,20 +22,24 @@ namespace CubeSurfers.Managers
 
         public void Stack(Transform cube)
         {
-            if(!cube.CompareTag("First Cube"))
+            if (!cube.CompareTag("First Cube"))
+            {
                 cube.position = 
-                    new Vector3(lastCubePos.position.x, lastCubePos.position.y + ((cube.transform.localScale.y + .5f) * stackableCubes.Count), lastCubePos.position.z);
+                    new Vector3(lastCubePos.position.x, cube.transform.localScale.y + stackableCubes.Count, lastCubePos.position.z);
+                StartCoroutine(OscillateRoutine());
+            }
+                
             stackableCubes.Add(cube);
 
-            //StartCoroutine(OscillateRoutine());
+            
         }
 
         private IEnumerator OscillateRoutine()
         {
             for (int i = 0; i < stackableCubes.Count; i++)
             {
-                stackableCubes[i].DOPunchScale(new Vector3(.06f, 0, .06f), .3f);
-                yield return new WaitForSeconds(.1f);
+                stackableCubes[i].DOPunchScale(new Vector3(1f, 0, 1.1f), .4f);
+                yield return _waitForSecondsForOscillate;
             }
         }
 

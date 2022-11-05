@@ -13,7 +13,7 @@ namespace CubeSurfers.Movement
         public float rightBounds = 4f;
 
         private float _deltaX;
-        private float _moveSensitivity = 20f;
+        private float _moveSensitivity = 100f;
 
         private Transform _thisTransform;
         private void Awake()
@@ -26,7 +26,7 @@ namespace CubeSurfers.Movement
         }
         private void MoveForward()
         {
-            transform.position += Vector3.forward * (Time.deltaTime * 20f);
+            transform.position += Vector3.forward * (Time.deltaTime * 10f);
         }
 
         private void MoveByBounds()

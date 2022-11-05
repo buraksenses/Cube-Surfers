@@ -16,7 +16,7 @@ namespace CubeSurfers.Collecting
         private Transform _thisTransform;
         [SerializeField] private Transform firstCubeTr;
         [SerializeField] private bool isStacked;
-        [SerializeField] private float x = 1;
+        [SerializeField] private float timeScale = 1;
         private void Awake()
         {
             _boxCollider = GetComponent<BoxCollider>();
@@ -34,7 +34,7 @@ namespace CubeSurfers.Collecting
 
         private void Update()
         {
-            Time.timeScale = x;
+            Time.timeScale = timeScale;
         }
 
         private void OnTriggerEnter(Collider other)

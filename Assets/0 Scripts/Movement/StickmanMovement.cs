@@ -8,11 +8,9 @@ namespace CubeSurfers.Movement
 {
     public class StickmanMovement : MonoBehaviour
     {
-        private Rigidbody _rigidbody;
-        private void Awake()
+        
+        private void Start()
         {
-            _rigidbody = GetComponent<Rigidbody>();
-            
             // EVENT ASSIGNMENTS
             EventManager.onCollectCube += Jump;
         }

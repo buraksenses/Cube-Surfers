@@ -13,7 +13,7 @@ namespace CubeSurfers.Movement
         public float rightBounds = 4f;
 
         private float _deltaX;
-        private float _moveSensitivity = 200f;
+        private float _moveSensitivity = 600f;
 
         private Transform _thisTransform;
         private void Awake()

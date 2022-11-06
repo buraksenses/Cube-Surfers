@@ -9,7 +9,7 @@ using DG.Tweening;
 
 namespace CubeSurfers.Collecting
 {
-    public class CollectableCube : MonoBehaviour,ICollectible
+    public class CollectibleCube : MonoBehaviour,ICollectible
     {
         private BoxCollider _boxCollider;
         private Rigidbody _rigidbody;

@@ -9,7 +9,7 @@ public class LavaObstacle : MonoBehaviour,IObstacle
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent(out CollectableCube collectableCube)) return;
+        if (!other.TryGetComponent(out CollectibleCube collectableCube)) return;
         Hit(collectableCube.ThisTransform);
     }
 

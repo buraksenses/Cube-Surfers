@@ -9,6 +9,7 @@ namespace CubeSurfers.Managers
     {
         public static event Action onUpdate, onFixedUpdate;
         public static event Action onCollectCube, onDropCube;
+        public static event Action onGameOver;
 
         private void Update()
         {
@@ -28,6 +29,11 @@ namespace CubeSurfers.Managers
         public void OnDropCube()
         {
             onDropCube?.Invoke();
+        }
+
+        public void OnGameOver()
+        {
+            onUpdate = null;
         }
     }
 }

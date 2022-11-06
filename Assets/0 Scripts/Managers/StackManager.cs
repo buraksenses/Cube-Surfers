@@ -45,7 +45,7 @@ namespace CubeSurfers.Managers
 
         public void Unstack(Transform cube)
         {
-            stackableCubes.Remove(transform);
+            stackableCubes.Remove(cube);
             EventManager.onUpdate -= cube.GetComponent<CollectableCube>().Move;
         }
     }

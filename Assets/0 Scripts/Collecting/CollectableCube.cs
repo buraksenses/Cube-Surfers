@@ -13,7 +13,7 @@ namespace CubeSurfers.Collecting
     {
         private BoxCollider _boxCollider;
         private Rigidbody _rigidbody;
-        private Transform _thisTransform;
+        internal Transform ThisTransform;
         [SerializeField] private Transform firstCubeTr;
         [SerializeField] private bool isStacked;
         [SerializeField] private float timeScale = 1;
@@ -21,13 +21,13 @@ namespace CubeSurfers.Collecting
         {
             _boxCollider = GetComponent<BoxCollider>();
             _rigidbody = GetComponent<Rigidbody>();
-            _thisTransform = transform;
+            ThisTransform = transform;
         }
 
         private void Start()
         {
             if (!CompareTag("First Cube")) return;
-            StackManager.Instance.Stack(_thisTransform);
+            StackManager.Instance.Stack(ThisTransform);
             EventManager.onUpdate += Move;
             isStacked = true;
         }
@@ -46,7 +46,7 @@ namespace CubeSurfers.Collecting
         private void OnCollisionEnter(Collision collision)
         {
             if (!collision.collider.CompareTag("Obstacle")) return;
-            StackManager.Instance.Unstack(_thisTransform);
+            StackManager.Instance.Unstack(ThisTransform);
             isStacked = false;
             Debug.Log(name);
         }
@@ -64,8 +64,8 @@ namespace CubeSurfers.Collecting
 
         internal void Move()
         {
-            _thisTransform.position =
-                new Vector3(firstCubeTr.position.x, _thisTransform.position.y, firstCubeTr.position.z);
+            ThisTransform.position =
+                new Vector3(firstCubeTr.position.x, ThisTransform.position.y, firstCubeTr.position.z);
         }
     }
 }

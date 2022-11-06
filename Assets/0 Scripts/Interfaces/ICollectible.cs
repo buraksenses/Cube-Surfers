@@ -6,3 +6,8 @@ public interface ICollectible
 {
    void GetCollected();
 }
+
+public interface IObstacle
+{
+   void Hit(Transform other);
+}

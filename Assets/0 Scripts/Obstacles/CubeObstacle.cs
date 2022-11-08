@@ -17,7 +17,7 @@ public class CubeObstacle : MonoBehaviour,IObstacle
         
         else if (collision.collider.TryGetComponent(out StickmanMovement stickmanMovement))
         {
-            FindObjectOfType<EventManager>().OnGameOver();
+            EventManager.Instance.OnGameOver();
         }
     }
 

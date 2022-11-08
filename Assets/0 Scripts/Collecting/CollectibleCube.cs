@@ -55,7 +55,7 @@ namespace CubeSurfers.Collecting
         {
             if (isStacked) return;
             StackManager.Instance.Stack(transform);
-            FindObjectOfType<EventManager>().OnCollectCube();
+            EventManager.Instance.OnCollectCube();
             _boxCollider.isTrigger = false;
             _rigidbody.isKinematic = false;
             EventManager.onUpdate += Move;

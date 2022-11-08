@@ -47,6 +47,8 @@ namespace CubeSurfers.Managers
         {
             stackableCubes.Remove(cube);
             EventManager.onUpdate -= cube.GetComponent<CollectibleCube>().Move;
+            if(stackableCubes.Count == 0)
+                EventManager.Instance.OnGameOver();
         }
     }
 }

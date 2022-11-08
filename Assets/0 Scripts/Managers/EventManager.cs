@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CubeSurfers.Managers
 {
-    public class EventManager : MonoBehaviour
+    public class EventManager : Singleton<EventManager>
     {
         public static event Action onUpdate, onFixedUpdate;
         public static event Action onCollectCube, onDropCube;

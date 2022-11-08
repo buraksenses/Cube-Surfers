@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cubeYellow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2216046377326075618, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
 --- !u!4 &55755248 stripped
@@ -643,6 +647,10 @@ PrefabInstance:
     - target: {fileID: 2216046377326075618, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
       propertyPath: m_Name
       value: cubeYellow (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216046377326075618, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1191,6 +1199,7 @@ MonoBehaviour:
   _dontDestryOnLoad: 1
   _overrideInstance: 0
   stackableCubes: []
+  spawnableCubePrefab: {fileID: 3041611453738490498, guid: 2f25beb66466eba4ba0bfabee0420db8, type: 3}
 --- !u!1 &711510222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cubeYellow
       objectReference: {fileID: 0}
+    - target: {fileID: 2216046377326075618, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
 --- !u!1 &1073482904
@@ -2373,6 +2386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cubeYellow (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2216046377326075618, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
@@ -2567,6 +2584,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cubeYellow (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2216046377326075618, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
@@ -2618,6 +2639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c3bf3a07ddd624b9cb1c500f1f1626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dontDestryOnLoad: 1
+  _overrideInstance: 0
 --- !u!4 &1711918365
 Transform:
   m_ObjectHideFlags: 0
@@ -3365,6 +3388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cubeYellow (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2216046377326075618, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
@@ -3373,6 +3400,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1552381625185043544, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
   m_PrefabInstance: {fileID: 2017548129}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2068028114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2216046377326075618, guid: 107613a8c13a17448b4f055a2abbe780, type: 3}
+  m_PrefabInstance: {fileID: 1307187623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2068028115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068028114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133fdc99eb6632942a5bd79b7ef8be1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedCubes: []
+  connectedCubeNumber: 4
 --- !u!1001 &2110292388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9324,6 +9370,7 @@ MonoBehaviour:
   firstCubeTr: {fileID: 1568134243}
   isStacked: 0
   timeScale: 1
+  isCollectible: 1
 --- !u!1 &2237825726346734846
 GameObject:
   m_ObjectHideFlags: 0

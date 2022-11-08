@@ -12,8 +12,10 @@ namespace CubeSurfers.Managers
     {
         public List<Transform> stackableCubes;
         private readonly float _cubeScale = 0.5f;//TODO: LocalScale olarak değiştirilecek.
-        private Transform lastCubePos;
+        internal Transform lastCubePos;
         private readonly WaitForSeconds _waitForSecondsForOscillate = new WaitForSeconds(.05f);
+
+        public CollectibleCube spawnableCubePrefab;
 
         private void Start()
         {
@@ -28,10 +30,18 @@ namespace CubeSurfers.Managers
                     new Vector3(lastCubePos.position.x, cube.transform.localScale.y + stackableCubes.Count, lastCubePos.position.z);
                 StartCoroutine(OscillateRoutine());
             }
-                
             stackableCubes.Add(cube);
+        }
 
-            
+        public void StackMultipleCubes(List<Transform> cubes)
+        {
+            for (var i = 0; i < cubes.Count; i++)
+            {
+                cubes[i].position = 
+                    new Vector3(lastCubePos.position.x, cubes[i].transform.localScale.y + stackableCubes.Count, lastCubePos.position.z);
+                stackableCubes.Add(cubes[i]);
+            }
+            StartCoroutine(OscillateRoutine());
         }
 
         private IEnumerator OscillateRoutine()

@@ -6,17 +6,20 @@ using CubeSurfers.Managers;
 using CubeSurfers.Movement;
 using UnityEngine;
 using DG.Tweening;
+using JetBrains.Annotations;
 
 namespace CubeSurfers.Collecting
 {
     public class CollectibleCube : MonoBehaviour,ICollectible
     {
-        private BoxCollider _boxCollider;
-        private Rigidbody _rigidbody;
+        internal BoxCollider _boxCollider;
+        internal Rigidbody _rigidbody;
         internal Transform ThisTransform;
-        [SerializeField] private Transform firstCubeTr;
-        [SerializeField] private bool isStacked;
+        [SerializeField,CanBeNull] internal Transform firstCubeTr;
+        [SerializeField] internal bool isStacked;
         [SerializeField] private float timeScale = 1;
+        public bool isCollectible = true;
+
         private void Awake()
         {
             _boxCollider = GetComponent<BoxCollider>();
@@ -39,8 +42,11 @@ namespace CubeSurfers.Collecting
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.TryGetComponent(out ICollectible collectible)) return;
+            if (!isCollectible) return;
+            if (!other.TryGetComponent(out ICollectible collectible) || other.CompareTag("Spawnable Cube")) return;
             GetCollected();
+            if(TryGetComponent(out MultipleCubeHolder multipleCubeHolder))
+                multipleCubeHolder.OnCollectMultipleCubes();
         }
 
         private void OnCollisionEnter(Collision collision)

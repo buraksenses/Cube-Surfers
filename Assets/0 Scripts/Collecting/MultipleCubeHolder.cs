@@ -12,6 +12,7 @@ namespace CubeSurfers.Collecting
         [SerializeField] private List<CollectibleCube> connectedCubes;
         public int connectedCubeNumber;
         private Transform _thisTransform;
+        private bool _isCollected;
 
         private void Start()
         {
@@ -33,7 +34,9 @@ namespace CubeSurfers.Collecting
 
         public void OnCollectMultipleCubes()
         {
-           StackManager.Instance.StackMultipleCubes(connectedCubes);
+            if(!_isCollected)
+                StackManager.Instance.StackMultipleCubes(connectedCubes);
+            _isCollected = true;
         }
     }
 }

@@ -45,8 +45,11 @@ namespace CubeSurfers.Collecting
             if (!isCollectible) return;
             if (!other.TryGetComponent(out ICollectible collectible) || other.CompareTag("Spawnable Cube")) return;
             GetCollected();
-            if(TryGetComponent(out MultipleCubeHolder multipleCubeHolder))
+            if (TryGetComponent(out MultipleCubeHolder multipleCubeHolder))
+            {
                 multipleCubeHolder.OnCollectMultipleCubes();
+            }
+                
         }
 
         private void OnCollisionEnter(Collision collision)

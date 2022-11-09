@@ -24,7 +24,7 @@ namespace CubeSurfers.Collecting
         
             for (int i = 0; i < connectedCubeNumber; i++)
             {
-                CollectibleCube cube = Instantiate(StackManager.Instance.spawnableCubePrefab,_thisTransform);
+                CollectibleCube cube = Instantiate(StackManager.Instance.spawnableCubePrefab);
                 connectedCubes.Add(cube);
                 cube.ThisTransform.position = new Vector3(_thisTransform.position.x,
                     _thisTransform.position.y + i + 1, _thisTransform.position.z);
@@ -33,14 +33,7 @@ namespace CubeSurfers.Collecting
 
         public void OnCollectMultipleCubes()
         {
-            for (int i = 0; i < connectedCubeNumber; i++)
-            {
-                StackManager.Instance.Stack(connectedCubes[i].ThisTransform);
-                connectedCubes[i]._boxCollider.isTrigger = false;
-                connectedCubes[i]._rigidbody.isKinematic = false;
-                EventManager.onUpdate += connectedCubes[i].Move;
-                connectedCubes[i].isStacked = true;
-            }
+           StackManager.Instance.StackMultipleCubes(connectedCubes);
         }
     }
 }

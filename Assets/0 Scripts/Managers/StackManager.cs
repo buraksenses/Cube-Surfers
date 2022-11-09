@@ -33,22 +33,28 @@ namespace CubeSurfers.Managers
             stackableCubes.Add(cube);
         }
 
-        public void StackMultipleCubes(List<Transform> cubes)
+        public void StackMultipleCubes(List<CollectibleCube> cubes)
         {
-            for (var i = 0; i < cubes.Count; i++)
+            foreach (var cube in cubes)
             {
-                cubes[i].position = 
-                    new Vector3(lastCubePos.position.x, cubes[i].transform.localScale.y + stackableCubes.Count, lastCubePos.position.z);
-                stackableCubes.Add(cubes[i]);
+                cube.ThisTransform.position = 
+                    new Vector3(lastCubePos.position.x, cube.transform.localScale.y + stackableCubes.Count, lastCubePos.position.z);
+                stackableCubes.Add(cube.ThisTransform);
+                cube._rigidbody.isKinematic = false;
+                cube._boxCollider.isTrigger = false;
+                cube.isStacked = true;
+                cube.firstCubeTr = lastCubePos;
+                EventManager.onUpdate += cube.Move;
+                cube.transform.localScale = Vector3.one;
+                EventManager.Instance.OnCollectCube();
             }
-            StartCoroutine(OscillateRoutine());
         }
 
         private IEnumerator OscillateRoutine()
         {
             for (int i = 0; i < stackableCubes.Count; i++)
             {
-                stackableCubes[i].DOPunchScale(new Vector3(1f, 0, 1.1f), .4f);
+                stackableCubes[i].DOPunchScale(new Vector3(1f, 0, 1f), .2f);
                 yield return _waitForSecondsForOscillate;
             }
         }

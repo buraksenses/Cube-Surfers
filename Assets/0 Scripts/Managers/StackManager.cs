@@ -42,13 +42,16 @@ namespace CubeSurfers.Managers
                 cube.ThisTransform.position =
                     new Vector3(lastCubePos.position.x, cube.transform.localScale.y + stackableCubes.Count,
                         lastCubePos.position.z);
+                
                 stackableCubes.Add(cube.ThisTransform);
-                cube._rigidbody.isKinematic = false;
-                cube._boxCollider.isTrigger = false;
+                
+                cube.Rigidbody.isKinematic = false;
+                cube.BoxCollider.isTrigger = false;
                 cube.isStacked = true;
                 cube.firstCubeTr = lastCubePos;
+                
                 EventManager.onUpdate += cube.Move;
-                EventManager.Instance.OnCollectCube();
+                EventManager.OnCollectCube();
             }
         }
 
@@ -65,8 +68,9 @@ namespace CubeSurfers.Managers
         {
             stackableCubes.Remove(cube);
             EventManager.onUpdate -= cube.GetComponent<CollectibleCube>().Move;
-            if(stackableCubes.Count == 0)
-                EventManager.Instance.OnGameOver();
+            
+            if (stackableCubes.Count != 0) return;
+            EventManager.OnGameOver();
         }
     }
 }

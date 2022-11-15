@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace CubeSurfers.Managers
 {
-    public class GameManager : Singleton<GameManager>
+    public class GameManager
     {
-        public bool isGameOver;
+        public static bool isGameOver;
     }
 }
 

@@ -10,10 +10,11 @@ namespace CubeSurfers.Collecting
     public class MultipleCubeHolder : MonoBehaviour
     {
         [SerializeField] private List<CollectibleCube> connectedCubes;
-        public int connectedCubeNumber;
         private Transform _thisTransform;
         private bool _isCollected;
-
+        
+        public int connectedCubeNumber;
+        
         private void Start()
         {
             StackMultipleCubesOnStart();

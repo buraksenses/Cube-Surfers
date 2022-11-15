@@ -27,8 +27,9 @@ public class LavaObstacle : MonoBehaviour,IObstacle
     {
         StackManager.Instance.Unstack(other);
         other.GetComponent<BoxCollider>().isTrigger = true;
+        other.GetComponent<Rigidbody>().drag = 10;
         
-        DOVirtual.DelayedCall(2f, () =>
+        DOVirtual.DelayedCall(3f, () =>
         {
             Destroy(other.gameObject);
         });

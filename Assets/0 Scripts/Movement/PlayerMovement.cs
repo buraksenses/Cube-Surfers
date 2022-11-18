@@ -16,7 +16,8 @@ namespace CubeSurfers.Movement
         private float _moveSensitivity = 600f;
 
         private Transform _thisTransform;
-        private void Awake()
+
+        private void Start()
         {
             _thisTransform = transform;
             
@@ -24,6 +25,7 @@ namespace CubeSurfers.Movement
             EventManager.onUpdate += MoveForward;
             EventManager.onUpdate += MoveByBounds;
         }
+
         private void MoveForward()
         {
             transform.position += Vector3.forward * (Time.deltaTime * 10f);
@@ -31,7 +33,6 @@ namespace CubeSurfers.Movement
 
         private void MoveByBounds()
         {
-
             var modelPos = _thisTransform.localPosition;
 
 

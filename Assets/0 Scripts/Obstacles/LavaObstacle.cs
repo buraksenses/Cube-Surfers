@@ -19,7 +19,6 @@ public class LavaObstacle : MonoBehaviour,IObstacle
         {
             stickmanMovement.GetComponent<CapsuleCollider>().isTrigger = true;
             stickmanMovement.GetComponent<Rigidbody>().drag = 10;
-            EventManager.OnGameOver();
         }
     }
 

@@ -9,10 +9,21 @@ namespace CubeSurfers.Managers
     {
         public static event Action onUpdate, onFixedUpdate;
         public static event Action onCollectCube, onDropCube;
-        public static event Action onGameOver;
+        public static event Action onGameOver,onSuccess;
+        
+        private static void ResetValues()
+        {
+            onSuccess = null;
+            onUpdate = null;
+            onCollectCube = null;
+            onDropCube = null;
+            onFixedUpdate = null;
+            onGameOver = null;
+        }
 
         private void Update()
         {
+            if (!GameManager.isGameOver && !GameManager.isGameStarted) return;
             onUpdate?.Invoke();
         }
 
@@ -33,9 +44,16 @@ namespace CubeSurfers.Managers
 
         public static void OnGameOver()
         {
-            onUpdate = null;
             onGameOver?.Invoke();
+            ResetValues();
         }
+
+        public static void OnSuccess()
+        {
+            onSuccess?.Invoke();
+        }
+
+        
     }
 }
 

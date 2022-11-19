@@ -8,7 +8,7 @@ namespace CubeSurfers.Managers
     public class EventManager : MonoBehaviour
     {
         public static event Action onUpdate, onFixedUpdate;
-        public static event Action onCollectCube, onDropCube;
+        public static event Action onCollectCube, onDropCube,onCollectDiamond;
         public static event Action onGameOver,onSuccess;
         
         private static void ResetValues()
@@ -53,6 +53,10 @@ namespace CubeSurfers.Managers
             onSuccess?.Invoke();
         }
 
+        public static void OnCollectDiamond()
+        {
+            onCollectDiamond?.Invoke();
+        }
         
     }
 }

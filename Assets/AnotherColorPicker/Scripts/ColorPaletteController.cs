@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CubeSurfers.Managers;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class ColorPaletteController : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandler, IInitializePotentialDragHandler
 {
     [SerializeField] RectTransform picker;
-    [SerializeField] Image pickedColorImage;
+    [SerializeField] internal Image pickedColorImage;
     [SerializeField] Material colorWheelMat;
     [SerializeField] int totalNumberofColors = 24;
     [SerializeField] int wheelsCount = 2;
@@ -26,7 +27,8 @@ public class ColorPaletteController : MonoBehaviour, IBeginDragHandler, IDragHan
     [SerializeField] [Range(0, 1)] float minimumValue = 0.25f;
     [SerializeField] [Range(0, 1)] float maximumValue = 1;
     [SerializeField] private Image cubeUI;
-    
+    [SerializeField] private DataManager gameData;
+
     //dragging variables
     bool dragging = false;
     float satValAmount = 1;
@@ -91,7 +93,7 @@ public class ColorPaletteController : MonoBehaviour, IBeginDragHandler, IDragHan
         UpdateMaterial();
         UpdateColor();
         OnColorChange.AddListener(ColorManager.ChangeColor);
-        cubeUI.color = pickedColorImage.color;
+        cubeUI.color = gameData.cubeColor;
     }
     void UpdateMaterialInitialValues()
     {

@@ -110,3 +110,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   desiredPos: {fileID: 0}
   collectedDiamondPrefab: {fileID: 8880347710268868409, guid: 78fe63c8a3c3eed41a131043f3b4d1aa, type: 3}
+  gameData: {fileID: 11400000, guid: c0c04f402e510c8499daa0d3f31061cc, type: 2}

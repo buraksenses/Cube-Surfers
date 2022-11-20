@@ -15,12 +15,15 @@ namespace CubeSurfers.Managers
         [SerializeField] private TMP_Text txtGemCount;
         [SerializeField] private GameObject mainMenu;
 
+        [Header("Scriptable Object References")] [SerializeField]
+        private DataManager gameData;
+
         private void Start()
         {
             tapToStartButton.gameObject.SetActive(true);
             Vector3 scaleVector = new Vector3(1.1f,1,1);
             tapToStartButton.DOScale(scaleVector, 1f).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.Linear);
-            txtGemCount.text = GameManager.GemCount.ToString();
+            txtGemCount.text = gameData.gem.ToString();
 
             //===== EVENT ASSIGNMENTS =====
 
@@ -47,7 +50,11 @@ namespace CubeSurfers.Managers
 
         private void OnCollectDiamond()
         {
-            txtGemCount.text = GameManager.IncreaseGemCount().ToString();
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                txtGemCount.text = gameData.gem.ToString();
+            });
+
         }
 
         #region Button Functions
@@ -66,6 +73,7 @@ namespace CubeSurfers.Managers
 
         public void StartButton()
         {
+            gameData.cubeColor = FindObjectOfType<ColorPaletteController>().pickedColorImage.color;
             mainMenu.SetActive(false);
         }
 

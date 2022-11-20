@@ -5,27 +5,31 @@ using System.Linq;
 using CubeSurfers.Collecting;
 using UnityEngine;
 
-public class ColorManager : MonoBehaviour
+namespace CubeSurfers.Managers
 {
-   private  List<CollectibleCube> _collectibleCubes;
-   private static List<MeshRenderer> _cubeMeshRenderers = new List<MeshRenderer>();
+    public class ColorManager : MonoBehaviour
+    {
+        private  List<CollectibleCube> _collectibleCubes;
+        private static List<MeshRenderer> _cubeMeshRenderers = new List<MeshRenderer>();
 
-   private void Awake()
-   {
-      _collectibleCubes = FindObjectsOfType<CollectibleCube>().ToList();
+        private void Awake()
+        {
+            _collectibleCubes = FindObjectsOfType<CollectibleCube>().ToList();
 
-      foreach (var collectibleCube in _collectibleCubes)
-      {
-         _cubeMeshRenderers.Add(collectibleCube.GetComponent<MeshRenderer>());
-      }
-   }
+            foreach (var collectibleCube in _collectibleCubes)
+            {
+                _cubeMeshRenderers.Add(collectibleCube.GetComponent<MeshRenderer>());
+            }
+        }
 
-   public static void ChangeColor(Color color)
-   {
-      foreach (var cubeMeshRenderer in _cubeMeshRenderers)
-      {
-         cubeMeshRenderer.sharedMaterial.color = color;
-      }
-   }
+        public static void ChangeColor(Color color)
+        {
+            foreach (var cubeMeshRenderer in _cubeMeshRenderers)
+            {
+                cubeMeshRenderer.sharedMaterial.color = color;
+            }
+        }
    
+    }
 }
+

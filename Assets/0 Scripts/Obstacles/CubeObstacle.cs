@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using CubeSurfers.Collecting;
 using CubeSurfers.Managers;
 using CubeSurfers.Movement;

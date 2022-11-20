@@ -1,11 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
 using CubeSurfers.Managers;
-using CubeSurfers.Movement;
 using UnityEngine;
-using DG.Tweening;
 using JetBrains.Annotations;
 
 namespace CubeSurfers.Collecting

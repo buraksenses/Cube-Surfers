@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4000012015927304}
   - component: {fileID: 33000010548150562}
   - component: {fileID: 23000012859278624}
-  - component: {fileID: 114000013075131974}
+  - component: {fileID: 850673901}
+  - component: {fileID: 850673900}
   m_Layer: 0
   m_Name: Diamondo
   m_TagString: Untagged
@@ -82,7 +83,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &114000013075131974
+--- !u!65 &850673901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013931470818}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6415828, y: 0.6501371, z: 0.9600002}
+  m_Center: {x: 0, y: -0.000000014901165, z: 0}
+--- !u!114 &850673900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,18 +105,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013931470818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff967b7ed48f2441bcf509edf6b889a, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b69be343d49584191b077472574f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnimated: 1
-  isRotating: 1
-  isFloating: 1
-  isScaling: 1
-  rotationAngle: {x: 0, y: 0, z: 10}
-  rotationSpeed: 10
-  floatSpeed: 0.04
-  floatRate: 0.5
-  startScale: {x: 1, y: 1, z: 1}
-  endScale: {x: 1.5, y: 1.5, z: 1.5}
-  scaleSpeed: 1
-  scaleRate: 0.5
+  desiredPos: {fileID: 0}
+  collectedDiamondPrefab: {fileID: 8880347710268868409, guid: 78fe63c8a3c3eed41a131043f3b4d1aa, type: 3}

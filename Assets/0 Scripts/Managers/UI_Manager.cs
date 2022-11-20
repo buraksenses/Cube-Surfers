@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
+using UnityEngine.UIElements;
+using UniRx.Triggers;
 
 namespace CubeSurfers.Managers
 {
@@ -15,6 +13,7 @@ namespace CubeSurfers.Managers
         [SerializeField] private GameObject winPanel;
         [SerializeField] private Transform tapToStartButton;
         [SerializeField] private TMP_Text txtGemCount;
+        [SerializeField] private GameObject mainMenu;
 
         private void Start()
         {
@@ -28,11 +27,17 @@ namespace CubeSurfers.Managers
             EventManager.onGameOver += OnFail;
             EventManager.onSuccess += OnSuccess;
             EventManager.onCollectDiamond += OnCollectDiamond;
+            
+            // ===== ON CLICK EVENT ASSIGNMENTS =====
         }
 
         private void OnFail()
         {
-            losePanel.SetActive(true);
+            DOVirtual.DelayedCall(1f,() =>
+            {
+                losePanel.SetActive(true);
+            });
+            
         }
 
         private void OnSuccess()
@@ -57,6 +62,11 @@ namespace CubeSurfers.Managers
         {
             GameManager.ResetValues();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//TODO: level prefableri yüklenecek.
+        }
+
+        public void StartButton()
+        {
+            mainMenu.SetActive(false);
         }
 
         #endregion

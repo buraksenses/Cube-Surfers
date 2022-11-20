@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using CubeSurfers.Managers;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace CubeSurfers.Managers
 {

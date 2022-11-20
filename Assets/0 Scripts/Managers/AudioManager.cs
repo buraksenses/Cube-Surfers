@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CubeSurfers.Managers
@@ -9,12 +6,14 @@ namespace CubeSurfers.Managers
     {
         [SerializeField] private AudioClip collectingSound;
         [SerializeField] private AudioClip gameOverSound;
+        [SerializeField] private AudioClip diamondSound;
         [SerializeField] private AudioSource audioSource;
 
         private void Start()
         {
             EventManager.onCollectCube += PlayCollectSound;
             EventManager.onGameOver += PlayGameOverSound;
+            EventManager.onCollectDiamond += PlayDiamondSound;
         }
 
         private void PlayCollectSound()
@@ -25,6 +24,11 @@ namespace CubeSurfers.Managers
         private void PlayGameOverSound()
         {
             audioSource.PlayOneShot(gameOverSound);
+        }
+
+        private void PlayDiamondSound()
+        {
+            audioSource.PlayOneShot(diamondSound);   
         }
     }
 

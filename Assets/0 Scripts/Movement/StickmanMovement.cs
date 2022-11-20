@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using CubeSurfers.Managers;
 using UnityEngine;
 
@@ -8,7 +5,6 @@ namespace CubeSurfers.Movement
 {
     public class StickmanMovement : MonoBehaviour
     {
-        
         private void Start()
         {
             // EVENT ASSIGNMENTS

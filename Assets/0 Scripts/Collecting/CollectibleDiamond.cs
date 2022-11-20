@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine.Utility;
-using CubeSurfers.Collecting;
 using CubeSurfers.Managers;
 using DG.Tweening;
 using UnityEngine;
@@ -20,13 +15,14 @@ namespace CubeSurfers.Collecting
             _mainCamera = Camera.main;
 
             // ===== EVENT ASSIGNMENTS =====
-            EventManager.onCollectDiamond += GetCollected;
+            //EventManager.onCollectDiamond += GetCollected;
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent(out CollectibleCube collectibleCube)) return;
             EventManager.OnCollectDiamond();
+            GetCollected();
         }
 
         public void GetCollected()

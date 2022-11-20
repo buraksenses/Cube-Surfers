@@ -6,7 +6,6 @@ namespace CubeSurfers.Managers
     {
         public static bool isGameOver = false;
         public static bool isGameStarted = false;
-        [SerializeField] private DataManager gameData;
 
         public static void ResetValues()
         {

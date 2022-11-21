@@ -6,12 +6,17 @@ namespace CubeSurfers.Managers
     [CreateAssetMenu(fileName = "Game Data",menuName = "Game Data")]
     public class DataManager : ScriptableObject
     {
-        public int gem;
+        public int Gem { get; private set; }
         public Color cubeColor;
 
-        public void IncreaseGemCount()
+        private void OnEnable()
         {
-            gem++;
+            EventManager.onCollectDiamond += IncreaseGemCount;
+        }
+
+        private void IncreaseGemCount()
+        {
+            Gem++;
         }
     }
 }

@@ -4,32 +4,36 @@ using CubeSurfers.Movement;
 using DG.Tweening;
 using UnityEngine;
 
-public class LavaObstacle : MonoBehaviour,IObstacle
+namespace CubeSurfers.Obstacles
 {
-    private void OnTriggerEnter(Collider other)
+    public class LavaObstacle : MonoBehaviour,IObstacle
     {
-        if (other.TryGetComponent(out CollectibleCube collectableCube))
+        private void OnTriggerEnter(Collider other)
         {
-            Hit(collectableCube.ThisTransform);
+            if (other.TryGetComponent(out CollectibleCube collectableCube))
+            {
+                Hit(collectableCube.ThisTransform);
+            }
+            else if (other.TryGetComponent(out StickmanMovement stickmanMovement))
+            {
+                stickmanMovement.GetComponent<CapsuleCollider>().isTrigger = true;
+                stickmanMovement.GetComponent<Rigidbody>().drag = 10;
+            }
         }
-        else if (other.TryGetComponent(out StickmanMovement stickmanMovement))
-        {
-            stickmanMovement.GetComponent<CapsuleCollider>().isTrigger = true;
-            stickmanMovement.GetComponent<Rigidbody>().drag = 10;
-        }
-    }
 
-    public void Hit(Transform other)
-    {
-        StackManager.Instance.Unstack(other);
-        other.GetComponent<BoxCollider>().isTrigger = true;
-        other.GetComponent<Rigidbody>().drag = 10;
-        
-        DOVirtual.DelayedCall(3f, () =>
+        public void Hit(Transform other)
         {
-            Destroy(other.gameObject);
-        });
+            StackManager.Instance.Unstack(other);
+            other.GetComponent<BoxCollider>().isTrigger = true;
+            other.GetComponent<Rigidbody>().drag = 10;
+
+            DOVirtual.DelayedCall(3f, () =>
+            {
+                Destroy(other.gameObject);
+            });
         
-    }
+        }
     
+    }
 }
+

@@ -3,23 +3,27 @@ using CubeSurfers.Managers;
 using CubeSurfers.Movement;
 using UnityEngine;
 
-public class CubeObstacle : MonoBehaviour,IObstacle
+namespace CubeSurfers.Obstacles
 {
-    private void OnCollisionEnter(Collision collision)
+    public class CubeObstacle : MonoBehaviour,IObstacle
     {
-        if (collision.collider.TryGetComponent(out CollectibleCube collectableCube))
+        private void OnCollisionEnter(Collision collision)
         {
-            Hit(collectableCube.ThisTransform);
-        }
+            if (collision.collider.TryGetComponent(out CollectibleCube collectableCube))
+            {
+                Hit(collectableCube.ThisTransform);
+            }
         
-        else if (collision.collider.TryGetComponent(out StickmanMovement stickmanMovement))
+            else if (collision.collider.TryGetComponent(out StickmanMovement stickmanMovement))
+            {
+                EventManager.OnGameOver();
+            }
+        }
+
+        public void Hit(Transform other)
         {
-            EventManager.OnGameOver();
+            StackManager.Instance.Unstack(other);
         }
     }
 
-    public void Hit(Transform other)
-    {
-        StackManager.Instance.Unstack(other);
-    }
 }

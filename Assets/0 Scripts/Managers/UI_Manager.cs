@@ -23,7 +23,7 @@ namespace CubeSurfers.Managers
             tapToStartButton.gameObject.SetActive(true);
             Vector3 scaleVector = new Vector3(1.1f,1,1);
             tapToStartButton.DOScale(scaleVector, 1f).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.Linear);
-            txtGemCount.text = gameData.gem.ToString();
+            txtGemCount.text = gameData.Gem.ToString();
 
             //===== EVENT ASSIGNMENTS =====
 
@@ -52,7 +52,7 @@ namespace CubeSurfers.Managers
         {
             DOVirtual.DelayedCall(1f, () =>
             {
-                txtGemCount.text = gameData.gem.ToString();
+                txtGemCount.text = gameData.Gem.ToString();
             });
 
         }

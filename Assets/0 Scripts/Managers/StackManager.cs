@@ -10,7 +10,7 @@ namespace CubeSurfers.Managers
 {
     public class StackManager : Singleton<StackManager>
     {
-        public List<Transform> stackableCubes;
+        [SerializeField] internal List<Transform> stackableCubes;
         private readonly float _cubeScale = 0.5f;//TODO: LocalScale olarak değiştirilecek.
         internal Transform lastCubePos;
         private readonly WaitForSeconds _waitForSecondsForOscillate = new WaitForSeconds(.05f);
@@ -59,7 +59,7 @@ namespace CubeSurfers.Managers
         {
             for (int i = 0; i < stackableCubes.Count; i++)
             {
-                stackableCubes[i].DOPunchScale(new Vector3(1f, 0, 1f), .4f);
+                stackableCubes[i].DOPunchScale(new Vector3(.75f, 0, .75f), .4f);
                 yield return _waitForSecondsForOscillate;
             }
         }

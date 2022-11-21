@@ -1,59 +1,58 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using CubeSurfers.Managers;
 using UnityEngine;
 
-public class GameSaveManager : MonoBehaviour
+namespace CubeSurfers.Managers
 {
-    [SerializeField] private DataManager gameData;
-
-    private void Start()
+    public class GameSaveManager : MonoBehaviour
     {
-        LoadGame();
-    }
-
-    public bool IsSaveFile()
-    {
-        return Directory.Exists(Application.persistentDataPath + "cubesurfers_save");
-    }
-
-    public void SaveGame()
-    {
-        if (!IsSaveFile())
+        [SerializeField] private DataManager gameData;
+    
+        private void Start()
         {
-            Directory.CreateDirectory(Application.persistentDataPath + "/cubesurfers_save");
+            LoadGame();
+            
+            //===== EVENT ASSIGNMENTS =====
+            EventManager.onCollectDiamond += SaveGame;
         }
-        if (!Directory.Exists(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data"))
+    
+        private bool IsSaveFile()
         {
-            Directory.CreateDirectory(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data");
+            return Directory.Exists(Application.persistentDataPath + "cubesurfers_save");
         }
-
-        Debug.Log("Game Saved");
-        var json = JsonUtility.ToJson(gameData);
-        File.WriteAllText(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data/cubesurfers_save.txt", json);
-    }
-
-    public void LoadGame()
-    {
-        if (!Directory.Exists(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data"))
+    
+        private void SaveGame()
         {
-            SaveGame();
+            if (!IsSaveFile())
+            {
+                Directory.CreateDirectory(Application.persistentDataPath + "/cubesurfers_save");
+            }
+            if (!Directory.Exists(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data"))
+            {
+                Directory.CreateDirectory(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data");
+            }
+            var json = JsonUtility.ToJson(gameData);
+            File.WriteAllText(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data/cubesurfers_save.txt", json);
         }
-
-        if (File.Exists(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data/cubesurfers_save.txt"))
+    
+        private void LoadGame()
         {
-            var file = File.ReadAllText(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data/cubesurfers_save.txt");
-            JsonUtility.FromJsonOverwrite((string)file, gameData);
+            if (!Directory.Exists(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data"))
+            {
+                SaveGame();
+            }
+    
+            if (File.Exists(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data/cubesurfers_save.txt"))
+            {
+                var file = File.ReadAllText(Application.persistentDataPath + "/cubesurfers_save/cubesurfers_data/cubesurfers_save.txt");
+                JsonUtility.FromJsonOverwrite((string)file, gameData);
+            }
         }
-
-        Debug.Log("Game Loaded");
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.U))
-            SaveGame();
+    
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.U))
+                SaveGame();
+        }
     }
 }
+

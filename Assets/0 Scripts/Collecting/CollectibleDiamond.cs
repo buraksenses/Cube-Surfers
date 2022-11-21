@@ -10,15 +10,9 @@ namespace CubeSurfers.Collecting
         [SerializeField] private RectTransform desiredPos;
         [SerializeField] private RectTransform collectedDiamondPrefab;
 
-        [Header("Scriptable Object Reference")] [SerializeField]
-        private DataManager gameData;
-    
         private void Start()
         {
             _mainCamera = Camera.main;
-
-            // ===== EVENT ASSIGNMENTS =====
-            //EventManager.onCollectDiamond += GetCollected;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -33,7 +27,7 @@ namespace CubeSurfers.Collecting
         {
             Vector3 screenPoint = _mainCamera.WorldToScreenPoint(transform.position);
             RectTransform rectTransform = Instantiate(collectedDiamondPrefab, screenPoint,Quaternion.identity,desiredPos);
-            gameData.IncreaseGemCount();
+            
             rectTransform.DOMove(desiredPos.position, 1f).SetEase(Ease.InBack).OnComplete(() =>
             {
                 Destroy(rectTransform.gameObject);

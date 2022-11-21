@@ -27,6 +27,8 @@ public class ColorPaletteController : MonoBehaviour, IBeginDragHandler, IDragHan
     [SerializeField] [Range(0, 1)] float minimumValue = 0.25f;
     [SerializeField] [Range(0, 1)] float maximumValue = 1;
     [SerializeField] private Image cubeUI;
+    
+    [Header("Scriptable Object References"),Space(10)]
     [SerializeField] private DataManager gameData;
 
     //dragging variables

@@ -35,7 +35,6 @@ namespace CubeSurfers.Managers
 
         public void StackMultipleCubes(List<CollectibleCube> cubes)
         {
-            Debug.Log(cubes.Count);
             for (var ındex = 0; ındex < cubes.Count; ındex++)
             {
                 var cube = cubes[ındex];

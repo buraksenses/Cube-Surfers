@@ -7,12 +7,13 @@ namespace CubeSurfers.Collecting
     public class CollectibleDiamond : MonoBehaviour,ICollectible
     {
         private Camera _mainCamera;
-        [SerializeField] private RectTransform desiredPos;
+        private RectTransform _desiredPos;
         [SerializeField] private RectTransform collectedDiamondPrefab;
 
         private void Start()
         {
             _mainCamera = Camera.main;
+            _desiredPos = GameObject.FindGameObjectWithTag("GemPanel").GetComponent<RectTransform>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -26,12 +27,12 @@ namespace CubeSurfers.Collecting
         public void GetCollected()
         {
             Vector3 screenPoint = _mainCamera.WorldToScreenPoint(transform.position);
-            RectTransform rectTransform = Instantiate(collectedDiamondPrefab, screenPoint,Quaternion.identity,desiredPos);
+            RectTransform rectTransform = Instantiate(collectedDiamondPrefab, screenPoint,Quaternion.identity,_desiredPos);
             
-            rectTransform.DOMove(desiredPos.position, 1f).SetEase(Ease.InBack).OnComplete(() =>
+            rectTransform.DOMove(_desiredPos.position, 1f).SetEase(Ease.InBack).OnComplete(() =>
             {
                 Destroy(rectTransform.gameObject);
-                desiredPos.DOPunchScale(Vector3.one * 1.05f, .4f);
+                _desiredPos.DOPunchScale(Vector3.one * 1.05f, .4f);
             });
             gameObject.SetActive(false);
         }

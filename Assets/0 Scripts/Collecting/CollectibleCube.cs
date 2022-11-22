@@ -1,3 +1,4 @@
+using System;
 using CubeSurfers.Managers;
 using UnityEngine;
 using JetBrains.Annotations;
@@ -47,6 +48,7 @@ namespace CubeSurfers.Collecting
             if (isStacked) return;
             StackManager.Instance.Stack(ThisTransform);
             EffectManager.Instance.CreateFireworkEffect(ThisTransform.position + Vector3.back);
+            EffectManager.Instance.CreatePlusOneEffect(ThisTransform.position + Vector3.right);
             EventManager.OnCollectCube();
             BoxCollider.isTrigger = false;
             Rigidbody.isKinematic = false;

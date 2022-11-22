@@ -8,6 +8,7 @@ TagManager:
   - First Cube
   - FirstCubePos
   - Spawnable Cube
+  - GemPanel
   layers:
   - Default
   - TransparentFX

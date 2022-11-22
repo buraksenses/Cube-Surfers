@@ -6,13 +6,14 @@ namespace CubeSurfers.Managers
     public class GameSaveManager : MonoBehaviour
     {
         public DataManager gameData;
+        [SerializeField] private UI_Manager _uiManager;
 
         private void Start()
         {
             LoadGame();
-            
+            Instantiate(_uiManager.levelPrefabs[gameData.levelCount % 3]);
             //===== EVENT ASSIGNMENTS =====
-            EventManager.onCollectDiamond += SaveGame;
+            EventManager.onSuccess += SaveGame;
             EventManager.onCollectDiamond += gameData.IncreaseGemCount;
         }
     
@@ -21,7 +22,7 @@ namespace CubeSurfers.Managers
             return Directory.Exists(Application.persistentDataPath + "cubesurfers_save");
         }
     
-        private void SaveGame()
+        internal void SaveGame()
         {
             if (!IsSaveFile())
             {

@@ -48,10 +48,12 @@ namespace CubeSurfers.Managers
                 cube.BoxCollider.isTrigger = false;
                 cube.isStacked = true;
                 cube.firstCubeTr = lastCubePos;
+                cube.tag = "Untagged";
                 
                 EventManager.onUpdate += cube.Move;
                 EventManager.OnCollectCube();
                 EffectManager.Instance.CreateFireworkEffect(cube.ThisTransform.position + Vector3.back);
+                EffectManager.Instance.CreatePlusOneEffect(cube.ThisTransform.position + Vector3.right);
             }
         }
 

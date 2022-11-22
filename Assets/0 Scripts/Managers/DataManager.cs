@@ -7,6 +7,7 @@ namespace CubeSurfers.Managers
     {
         public int gem;
         public Color cubeColor;
+        public int levelCount;
 
         public void IncreaseGemCount()
         {

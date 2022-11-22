@@ -12,7 +12,7 @@ namespace CubeSurfers.Managers
         private  List<CollectibleCube> _collectibleCubes;
         private static List<MeshRenderer> _cubeMeshRenderers = new List<MeshRenderer>();
 
-        private void Awake()
+        private void Start()
         {
             _collectibleCubes = FindObjectsOfType<CollectibleCube>().ToList();
 

@@ -15,6 +15,8 @@ namespace CubeSurfers.Managers
         [SerializeField] private TMP_Text txtGemCount;
         [SerializeField] private GameObject mainMenu;
 
+        [SerializeField] internal GameObject[] levelPrefabs; 
+
         [Header("Script References"), Space(20)] [SerializeField]
         private GameSaveManager gameSaveManager;
 
@@ -51,7 +53,6 @@ namespace CubeSurfers.Managers
             DOVirtual.DelayedCall(1f, () =>
             {
                 txtGemCount.text = gameSaveManager.gameData.gem.ToString();
-                Debug.Log("anan");
             });
 
         }
@@ -73,7 +74,15 @@ namespace CubeSurfers.Managers
         public void StartButton()
         {
             gameSaveManager.gameData.cubeColor = FindObjectOfType<ColorPaletteController>().pickedColorImage.color;
+            CameraManager.Instance.AssignFollowObject();
             mainMenu.SetActive(false);
+        }
+
+        public void NextButtonOnClick()
+        {
+            gameSaveManager.gameData.levelCount++;
+            gameSaveManager.SaveGame();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         #endregion

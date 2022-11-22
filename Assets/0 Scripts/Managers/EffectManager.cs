@@ -11,6 +11,7 @@ namespace CubeSurfers.Managers
     {
         [SerializeField] private Transform bubbleEffect;
         [SerializeField] private Transform fireworkEffect;
+        [SerializeField] private Transform plusOneEffect;
 
         public void BubbleLavaEffect(Vector3 pos)
         {
@@ -29,7 +30,16 @@ namespace CubeSurfers.Managers
                 EZ_PoolManager.Despawn(effectTr);
             });
         }
-    
+
+        public void CreatePlusOneEffect(Vector3 pos)
+        {
+            Transform effectTr = EZ_PoolManager.Spawn(plusOneEffect,pos, Quaternion.identity);
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                EZ_PoolManager.Despawn(effectTr);
+            });
+        }
+        
     }
 }
 

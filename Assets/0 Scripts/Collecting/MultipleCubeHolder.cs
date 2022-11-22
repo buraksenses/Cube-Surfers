@@ -30,6 +30,7 @@ namespace CubeSurfers.Collecting
                 connectedCubes.Add(cube);
                 cube.ThisTransform.position = new Vector3(_thisTransform.position.x,
                     _thisTransform.position.y + i + 1, _thisTransform.position.z);
+                cube.firstCubeTr = GameObject.FindGameObjectWithTag("FirstCubePos").transform;
             }
         }
 

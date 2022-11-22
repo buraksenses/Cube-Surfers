@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace CubeSurfers.Managers
@@ -8,6 +7,11 @@ namespace CubeSurfers.Managers
     {
         public int gem;
         public Color cubeColor;
+
+        public void IncreaseGemCount()
+        {
+            gem++;
+        }
     }
 }
 

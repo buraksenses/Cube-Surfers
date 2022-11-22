@@ -51,6 +51,7 @@ namespace CubeSurfers.Managers
                 
                 EventManager.onUpdate += cube.Move;
                 EventManager.OnCollectCube();
+                EffectManager.Instance.CreateFireworkEffect(cube.ThisTransform.position + Vector3.back);
             }
         }
 

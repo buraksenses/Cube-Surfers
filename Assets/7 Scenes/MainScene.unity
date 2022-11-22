@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1818382, g: 0.22751287, b: 0.30741885, a: 1}
+  m_IndirectSpecularColor: {r: 0.1818382, g: 0.2275129, b: 0.30741885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -856,6 +856,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc69f54f0e87d7448b92204fe4c93860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData:
+    gem: 0
+    cubeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &286091429
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,6 +2604,78 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2474181851860002949, guid: d34fc5b7e513e8249a28eac3a64ddde5, type: 3}
   m_PrefabInstance: {fileID: 868030721}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &923509472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 923509473}
+  - component: {fileID: 923509474}
+  m_Layer: 0
+  m_Name: EZ Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &923509473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923509472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1289800416}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &923509474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923509472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1701af0df6c96fa45bfa3662b319541b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPoolOptions:
+  - prefabTransform: {fileID: 448448, guid: f00b7ce74a405d547ad157c971a52fb9, type: 3}
+    instancesToPreload: 1
+    isPoolExpanded: 1
+    showDebugLog: 0
+    poolCanGrow: 1
+    cullDespawned: 0
+    cullAbove: 10
+    cullDelay: 2
+    cullAmount: 1
+    enableHardLimit: 0
+    hardLimit: 10
+    recycle: 1
+  - prefabTransform: {fileID: 468332, guid: d8ac9950df006754ea1bf8311f5c97bc, type: 3}
+    instancesToPreload: 1
+    isPoolExpanded: 1
+    showDebugLog: 0
+    poolCanGrow: 1
+    cullDespawned: 0
+    cullAbove: 10
+    cullDelay: 2
+    cullAmount: 1
+    enableHardLimit: 0
+    hardLimit: 10
+    recycle: 1
+  showDebugLog: 0
+  isRootExpanded: 1
+  autoAddMissingPrefabPool: 0
+  usePoolManager: 1
 --- !u!1 &939539040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3378,6 +3453,7 @@ Transform:
   - {fileID: 1597451388}
   - {fileID: 286091430}
   - {fileID: 277562451}
+  - {fileID: 923509473}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4479,6 +4555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dontDestryOnLoad: 1
   _overrideInstance: 0
+  bubbleEffect: {fileID: 468332, guid: d8ac9950df006754ea1bf8311f5c97bc, type: 3}
+  fireworkEffect: {fileID: 448448, guid: f00b7ce74a405d547ad157c971a52fb9, type: 3}
 --- !u!1 &1603323297
 GameObject:
   m_ObjectHideFlags: 3
@@ -5193,7 +5271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.90102196, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.7639375, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12049,7 +12127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d78081ec75d4f994e85a30024769e293, type: 2}
+  - {fileID: 2100000, guid: 7087ea45003f80545aca03035dc2e832, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12230,11 +12308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2083533288236809924, guid: 49c8f8874141ec541aac5097897c77ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.7501178
+      value: 3.57
       objectReference: {fileID: 0}
     - target: {fileID: 2083533288236809924, guid: 49c8f8874141ec541aac5097897c77ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.23
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2083533288236809924, guid: 49c8f8874141ec541aac5097897c77ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12268,18 +12346,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2083533288236809926, guid: 49c8f8874141ec541aac5097897c77ff, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2083533288236809926, guid: 49c8f8874141ec541aac5097897c77ff, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6999a37ff8fef044eab5f36103e7de63, type: 2}
-    - target: {fileID: 2083533288236809926, guid: 49c8f8874141ec541aac5097897c77ff, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6999a37ff8fef044eab5f36103e7de63, type: 2}
     - target: {fileID: 2083533288236809944, guid: 49c8f8874141ec541aac5097897c77ff, type: 3}
       propertyPath: m_Name
       value: Lava

@@ -45,7 +45,8 @@ namespace CubeSurfers.Collecting
         public void GetCollected()
         {
             if (isStacked) return;
-            StackManager.Instance.Stack(transform);
+            StackManager.Instance.Stack(ThisTransform);
+            EffectManager.Instance.CreateFireworkEffect(ThisTransform.position + Vector3.back);
             EventManager.OnCollectCube();
             BoxCollider.isTrigger = false;
             Rigidbody.isKinematic = false;

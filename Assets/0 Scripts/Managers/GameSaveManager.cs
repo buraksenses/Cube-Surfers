@@ -5,15 +5,15 @@ namespace CubeSurfers.Managers
 {
     public class GameSaveManager : MonoBehaviour
     {
-        internal DataManager gameData;
+        public DataManager gameData;
 
         private void Start()
         {
-            gameData = new DataManager();
             LoadGame();
             
             //===== EVENT ASSIGNMENTS =====
             EventManager.onCollectDiamond += SaveGame;
+            EventManager.onCollectDiamond += gameData.IncreaseGemCount;
         }
     
         private bool IsSaveFile()

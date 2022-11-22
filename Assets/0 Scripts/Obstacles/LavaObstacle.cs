@@ -14,17 +14,16 @@ namespace CubeSurfers.Obstacles
             {
                 Hit(collectableCube.ThisTransform);
             }
-            else if (other.TryGetComponent(out StickmanMovement stickmanMovement))
+            else if (other.TryGetComponent(out RagdollToggle ragdollToggle))
             {
-                stickmanMovement.GetComponent<CapsuleCollider>().isTrigger = true;
-                stickmanMovement.GetComponent<Rigidbody>().drag = 10;
-                FindObjectOfType<RagdollToggle>().RagdollActivate(true);
+                ragdollToggle.RagdollActivate(true);
             }
         }
 
         public void Hit(Transform other)
         {
             StackManager.Instance.Unstack(other);
+            EffectManager.Instance.BubbleLavaEffect(other.position);
             other.GetComponent<BoxCollider>().isTrigger = true;
             other.GetComponent<Rigidbody>().drag = 10;
 

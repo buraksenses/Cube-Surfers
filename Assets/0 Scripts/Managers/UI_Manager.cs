@@ -80,6 +80,7 @@ namespace CubeSurfers.Managers
 
         public void NextButtonOnClick()
         {
+            GameManager.ResetValues();
             gameSaveManager.gameData.levelCount++;
             gameSaveManager.SaveGame();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

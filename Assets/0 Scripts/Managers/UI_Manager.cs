@@ -15,28 +15,26 @@ namespace CubeSurfers.Managers
         [SerializeField] private TMP_Text txtGemCount;
         [SerializeField] private GameObject mainMenu;
 
-        [Header("Scriptable Object References")] [SerializeField]
-        private DataManager gameData;
+        [Header("Script References"), Space(20)] [SerializeField]
+        private GameSaveManager gameSaveManager;
 
         private void Start()
         {
             tapToStartButton.gameObject.SetActive(true);
             Vector3 scaleVector = new Vector3(1.1f,1,1);
             tapToStartButton.DOScale(scaleVector, 1f).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.Linear);
-            txtGemCount.text = gameData.Gem.ToString();
+            txtGemCount.text = gameSaveManager.gameData.gem.ToString();
 
             //===== EVENT ASSIGNMENTS =====
 
             EventManager.onGameOver += OnFail;
             EventManager.onSuccess += OnSuccess;
             EventManager.onCollectDiamond += OnCollectDiamond;
-            
-            // ===== ON CLICK EVENT ASSIGNMENTS =====
         }
 
         private void OnFail()
         {
-            DOVirtual.DelayedCall(1f,() =>
+            DOVirtual.DelayedCall(2f,() =>
             {
                 losePanel.SetActive(true);
             });
@@ -52,7 +50,8 @@ namespace CubeSurfers.Managers
         {
             DOVirtual.DelayedCall(1f, () =>
             {
-                txtGemCount.text = gameData.Gem.ToString();
+                txtGemCount.text = gameSaveManager.gameData.gem.ToString();
+                Debug.Log("anan");
             });
 
         }
@@ -73,7 +72,7 @@ namespace CubeSurfers.Managers
 
         public void StartButton()
         {
-            gameData.cubeColor = FindObjectOfType<ColorPaletteController>().pickedColorImage.color;
+            gameSaveManager.gameData.cubeColor = FindObjectOfType<ColorPaletteController>().pickedColorImage.color;
             mainMenu.SetActive(false);
         }
 

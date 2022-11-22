@@ -5,10 +5,11 @@ namespace CubeSurfers.Managers
 {
     public class GameSaveManager : MonoBehaviour
     {
-        [SerializeField] private DataManager gameData;
-    
+        internal DataManager gameData;
+
         private void Start()
         {
+            gameData = new DataManager();
             LoadGame();
             
             //===== EVENT ASSIGNMENTS =====

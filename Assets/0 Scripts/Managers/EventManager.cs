@@ -17,6 +17,7 @@ namespace CubeSurfers.Managers
             onDropCube = null;
             onFixedUpdate = null;
             onGameOver = null;
+            onCollectDiamond = null;
         }
 
         private void Update()
@@ -48,6 +49,7 @@ namespace CubeSurfers.Managers
 
         public static void OnSuccess()
         {
+            onUpdate = null;
             onSuccess?.Invoke();
         }
 

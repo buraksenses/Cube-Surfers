@@ -18,6 +18,7 @@ namespace CubeSurfers.Obstacles
             {
                 stickmanMovement.GetComponent<CapsuleCollider>().isTrigger = true;
                 stickmanMovement.GetComponent<Rigidbody>().drag = 10;
+                FindObjectOfType<RagdollToggle>().RagdollActivate(true);
             }
         }
 

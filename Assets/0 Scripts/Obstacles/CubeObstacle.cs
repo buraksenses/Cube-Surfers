@@ -14,9 +14,12 @@ namespace CubeSurfers.Obstacles
                 Hit(collectableCube.ThisTransform);
             }
         
-            else if (collision.collider.TryGetComponent(out StickmanMovement stickmanMovement))
+            else if (collision.collider.TryGetComponent(out RagdollToggle ragdollToggle))
             {
                 EventManager.OnGameOver();
+                ragdollToggle.RagdollActivate(true);
+                ragdollToggle.AddForceToPelvis(Vector3.back * 2f);
+
             }
         }
 

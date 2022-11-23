@@ -83,6 +83,7 @@ namespace CubeSurfers.Managers
             GameManager.ResetValues();
             gameSaveManager.gameData.levelCount++;
             gameSaveManager.SaveGame();
+            EventManager.ResetValues();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 

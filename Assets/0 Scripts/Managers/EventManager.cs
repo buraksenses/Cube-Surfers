@@ -9,7 +9,7 @@ namespace CubeSurfers.Managers
         public static event Action onCollectCube, onDropCube,onCollectDiamond;
         public static event Action onGameOver,onSuccess;
         
-        private static void ResetValues()
+        public static void ResetValues()
         {
             onSuccess = null;
             onUpdate = null;

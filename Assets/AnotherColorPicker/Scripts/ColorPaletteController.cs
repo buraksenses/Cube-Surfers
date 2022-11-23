@@ -1,4 +1,5 @@
-﻿using CubeSurfers.Managers;
+﻿using System;
+using CubeSurfers.Managers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -97,6 +98,13 @@ public class ColorPaletteController : MonoBehaviour, IBeginDragHandler, IDragHan
         OnColorChange.AddListener(ColorManager.ChangeColor);
         cubeUI.color = gameData.cubeColor;
     }
+
+    private void Start()
+    {
+        // ===== EVENT ASSIGNMENTS =====
+        EventManager.onSuccess += OnSuccess;
+    }
+
     void UpdateMaterialInitialValues()
     {
         colorWheelMat.SetFloat("_StartingAngle", startingAngle);
@@ -260,6 +268,11 @@ public class ColorPaletteController : MonoBehaviour, IBeginDragHandler, IDragHan
             if (Hue < 0) Hue += wheelsCount;
             UpdateHue();
         }
+    }
+
+    private void OnSuccess()
+    {
+        OnColorChange.RemoveListener(ColorManager.ChangeColor);
     }
 }
 [System.Serializable]

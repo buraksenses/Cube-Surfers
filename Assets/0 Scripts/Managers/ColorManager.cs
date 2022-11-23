@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CubeSurfers.Collecting;
+using DG.Tweening;
 using UnityEngine;
 
 namespace CubeSurfers.Managers
@@ -15,11 +16,13 @@ namespace CubeSurfers.Managers
         private void Start()
         {
             _collectibleCubes = FindObjectsOfType<CollectibleCube>().ToList();
-
-            foreach (var collectibleCube in _collectibleCubes)
-            {
+         
+            foreach (var collectibleCube in _collectibleCubes) 
+            { 
                 _cubeMeshRenderers.Add(collectibleCube.GetComponent<MeshRenderer>());
             }
+
+            EventManager.onSuccess += ResetList;
         }
 
         public static void ChangeColor(Color color)
@@ -28,6 +31,11 @@ namespace CubeSurfers.Managers
             {
                 cubeMeshRenderer.sharedMaterial.color = color;
             }
+        }
+
+        private void ResetList()
+        {
+            _cubeMeshRenderers = new List<MeshRenderer>();
         }
    
     }

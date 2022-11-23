@@ -14,6 +14,7 @@ namespace CubeSurfers.Managers
         [SerializeField] private Transform tapToStartButton;
         [SerializeField] private TMP_Text txtGemCount;
         [SerializeField] private GameObject mainMenu;
+        [SerializeField] private TMP_Text txtLevelCount;
 
         [SerializeField] internal GameObject[] levelPrefabs; 
 
@@ -26,6 +27,7 @@ namespace CubeSurfers.Managers
             Vector3 scaleVector = new Vector3(1.1f,1,1);
             tapToStartButton.DOScale(scaleVector, 1f).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.Linear);
             txtGemCount.text = gameSaveManager.gameData.gem.ToString();
+            txtLevelCount.text = $"Level {gameSaveManager.gameData.levelCount}";
 
             //===== EVENT ASSIGNMENTS =====
 

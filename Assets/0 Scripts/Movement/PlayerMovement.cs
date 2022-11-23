@@ -28,7 +28,7 @@ namespace CubeSurfers.Movement
 
         private void MoveForward()
         {
-            transform.position += Vector3.forward * (Time.deltaTime * 10f);
+            transform.position += Vector3.forward * (Time.deltaTime * 15f);
         }
 
         private void MoveByBounds()

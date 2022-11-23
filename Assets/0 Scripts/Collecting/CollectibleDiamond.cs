@@ -28,11 +28,10 @@ namespace CubeSurfers.Collecting
         {
             Vector3 screenPoint = _mainCamera.WorldToScreenPoint(transform.position);
             RectTransform rectTransform = Instantiate(collectedDiamondPrefab, screenPoint,Quaternion.identity,_desiredPos);
-            
-            rectTransform.DOMove(_desiredPos.position, 1f).SetEase(Ease.InBack).OnComplete(() =>
+            rectTransform.DOMove(_desiredPos.position, .5f).SetEase(Ease.InBack).OnComplete(() =>
             {
-                Destroy(rectTransform.gameObject);
-                _desiredPos.DOPunchScale(Vector3.one * 1.05f, .4f);
+                Destroy(rectTransform.gameObject); 
+                _desiredPos.transform.GetChild(0).DOPunchScale(Vector3.one * 1.01f, .025f);
             });
             gameObject.SetActive(false);
         }

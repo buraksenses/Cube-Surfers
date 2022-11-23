@@ -6,12 +6,12 @@ namespace CubeSurfers.Managers
     public class GameSaveManager : MonoBehaviour
     {
         public DataManager gameData;
-        [SerializeField] private UI_Manager _uiManager;
+        [SerializeField] private UI_Manager uiManager;
 
         private void Start()
         {
             LoadGame();
-            Instantiate(_uiManager.levelPrefabs[gameData.levelCount % 3]);
+            Instantiate(uiManager.levelPrefabs[gameData.levelCount % 3]);
             //===== EVENT ASSIGNMENTS =====
             EventManager.onSuccess += SaveGame;
             EventManager.onCollectDiamond += gameData.IncreaseGemCount;

@@ -27,7 +27,7 @@ namespace CubeSurfers.Managers
             Vector3 scaleVector = new Vector3(1.1f,1,1);
             tapToStartButton.DOScale(scaleVector, 1f).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.Linear);
             txtGemCount.text = gameSaveManager.gameData.gem.ToString();
-            txtLevelCount.text = $"Level {gameSaveManager.gameData.levelCount}";
+            txtLevelCount.text = $"Level {gameSaveManager.gameData.levelCount + 1}";
 
             //===== EVENT ASSIGNMENTS =====
 
